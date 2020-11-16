@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 
-from .models import Setting
+from .models import Setting, About, Resume, Service, CompanyType, Reference
+from .forms import ContactForm
 
 # Create your views here.
 
@@ -9,8 +11,22 @@ def home(request):
         setting = Setting.objects.first()
         portfolio = setting.portfolio
         services = setting.services
+        about = About.objects.first()
+        resumes = Resume.objects.all()
+        services = Service.objects.all()
+        company_types = CompanyType.objects.all()
+        references = Reference.objects.all()
     except:
         return render(request, 'home.html')
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Başarı bir şekilde mesajınız tarafımıza iletilmiştir. En kısa sürede sizinle iletişime geçilecektir.')
+            return redirect("/")
+    else:
+        form = ContactForm()
     
     
 
@@ -19,5 +35,12 @@ def home(request):
         "setting": setting,
         "portfolio": portfolio,
         "services": services,
+        "about": about,
+        "resumes": resumes,
+        "services": services,
+        "company_types": company_types,
+        "references": references,
+        "form": form,
+
     }
     return render(request, 'index.html', context)
