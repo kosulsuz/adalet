@@ -23,7 +23,11 @@ def home(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
+            print()
+            print()
+            print("üst taraf")
             messages.success(request, 'Başarı bir şekilde mesajınız tarafımıza iletilmiştir. En kısa sürede sizinle iletişime geçilecektir.')
+            print("messaj gitti")
             return redirect("/")
     else:
         form = ContactForm()

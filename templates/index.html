@@ -390,19 +390,9 @@ body::before {
         </div>
       </div>
 
-      {% if messages %}
-      {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible mt-2" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        {{ message }}
-      </div>
-    {% endfor %}
-      
-      {%endif %}
 
-      <form action ="#contact" method="post" class = "mt-2 php-email-form " novalidate>
+
+      <form action ="#contact" method="post" novalidate class = "mt-2 bg-dark">
         {% csrf_token %}			
         
         <div class="form-row">
@@ -415,8 +405,9 @@ body::before {
         </div>
         {{ form.topic|as_crispy_field }}
         {{ form.content|as_crispy_field }}
-          <button type="submit" class="btn btn-success btn-block btn-sm">Send</button>
+          <button type="submit" class="btn btn-success btn-block btn-sm">Kaydet</button>
       </form>
+    </div>
 
     </div>
   </section><!-- End Contact Section -->

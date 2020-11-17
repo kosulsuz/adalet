@@ -127,7 +127,7 @@ class Resume(models.Model):
     sub_title = models.CharField("Alt başlık", max_length=50)
     sub1_title = models.CharField("Yeşil renkli başlık", max_length=50)
     image = models.ImageField("resim")
-    content = RichTextField("içerik", max_length=250)
+    content = RichTextField("içerik")
     ranking = models.SmallIntegerField("sıralama sayısı", unique = True)
     date = models.DateTimeField()
 
