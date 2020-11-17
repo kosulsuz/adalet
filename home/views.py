@@ -10,7 +10,7 @@ def home(request):
     try:
         setting = Setting.objects.first()
         portfolio = setting.portfolio
-        services = setting.services
+        service = setting.services
         about = About.objects.first()
         resumes = Resume.objects.all()
         services = Service.objects.all()
@@ -34,7 +34,7 @@ def home(request):
     context = {
         "setting": setting,
         "portfolio": portfolio,
-        "services": services,
+        "service": service,
         "about": about,
         "resumes": resumes,
         "services": services,

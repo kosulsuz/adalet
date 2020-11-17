@@ -40,9 +40,12 @@ class Setting(models.Model):
     phone = models.CharField(max_length=20)
     portfolio = models.BooleanField("Portfolio kısmının gözükmesini istiyorsanız tıklayınız:", default=False)
     services = models.BooleanField("Services kısmının segilenmesi için tıklayınız.", default=False)
-    service_name = models.CharField(max_length=20, default = "Hizmetlerimiz")
-    portfolio_name = models.CharField(max_length=20, default = "Görseller")
-    resume_name = models.CharField(max_length=20, default = "Faaliyetlerimiz")
+    home_name = models.CharField("Başlık1", max_length=20, default = "Home")
+    about_name = models.CharField("Başlık2", max_length=20, default = "About")  
+    resume_name = models.CharField("Başlık3", max_length=20, default = "Resume")
+    service_name = models.CharField("Başlık4", max_length=20, default = "Services")  
+    portfolio_name = models.CharField("Başlık5", max_length=20, default = "Portfolio")
+    contact_name = models.CharField("Başlık6", max_length=20, default = "Contact")
     class Meta:
         verbose_name = 'Site İçerik Ayarı'
         verbose_name_plural = 'Site İçerik Ayarları'
