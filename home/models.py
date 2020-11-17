@@ -181,6 +181,7 @@ class Reference(models.Model):
     content = models.CharField("Referansın kısa açıklaması:", max_length=75)
     image = models.ImageField("Referans resmi")
     company_type = models.ForeignKey('CompanyType', on_delete=models.CASCADE)
+    youtube_url = models.URLField("youtube_video_urli")
 
     class Meta:
         #ordering = ('sıralama_sayısı', )
