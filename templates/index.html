@@ -109,7 +109,7 @@ body::before {
     <div class="about-me container">
 
       <div class="section-title">
-        <h2>Hakkımızda</h2>
+        <h2>{{setting.about_name}}</h2>
         <p>{{about.title}}</p>
       </div>
 
@@ -235,7 +235,7 @@ body::before {
 
       <div class="section-title">
         <h2>{{setting.resume_name}}</h2>
-        <p>Faaliyetlerimize Göz Atın</p>
+        <p>{{setting.resume_name}}</p>
       </div>
 
       <div class="row">
@@ -347,8 +347,8 @@ body::before {
       {%endif %}
 
       <div class="section-title">
-        <h2>İletişim</h2>
-        <p>Bize Ulaşın</p>
+        <h2>{{setting.contact_name}}</h2>
+        <p>{{setting.contact_sub_name}}</p>
       </div>
 
       <div class="row mt-2">
@@ -364,7 +364,7 @@ body::before {
         <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
           <div class="info-box">
             <i class="bx bx-share-alt"></i>
-            <h3>Sosyal Medya Hesaplarımız</h3>
+            <h3>{{setting.contact_social_name}}</h3>
             <div class="social-links">
               <a href="{{setting.twitter_url}}" class="twitter"><i class="icofont-twitter"></i></a>
               <a href="{{setting.facebook_url}}" class="facebook"><i class="icofont-facebook"></i></a>
@@ -377,14 +377,14 @@ body::before {
         <div class="col-md-6 mt-4 d-flex align-items-stretch">
           <div class="info-box">
             <i class="bx bx-envelope"></i>
-            <h3>Email</h3>
+            <h3>{{setting.contact_email_name}}</h3>
             <p>{{setting.email}}</p>
           </div>
         </div>
         <div class="col-md-6 mt-4 d-flex align-items-stretch">
           <div class="info-box">
             <i class="bx bx-phone-call"></i>
-            <h3>Telefon</h3>
+            <h3>{{setting.contact_tel_name}}</h3>
             <p>{{setting.phone}}</p>
           </div>
         </div>
@@ -415,7 +415,7 @@ body::before {
         </div>
         {{ form.topic|as_crispy_field }}
         {{ form.content|as_crispy_field }}
-          <button type="submit" class="btn btn-success btn-block btn-sm">Kaydet</button>
+          <button type="submit" class="btn btn-success btn-block btn-sm">Send</button>
       </form>
 
     </div>

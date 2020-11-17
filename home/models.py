@@ -46,6 +46,15 @@ class Setting(models.Model):
     service_name = models.CharField("Başlık4", max_length=20, default = "Services")  
     portfolio_name = models.CharField("Başlık5", max_length=20, default = "Portfolio")
     contact_name = models.CharField("Başlık6", max_length=20, default = "Contact")
+    contact_sub_name = models.CharField("Contact kısmının alt başlığı", max_length=20, default = "Contact with us")
+    contact_tel_name = models.CharField("Contact kısmındaki telefon başlığı", max_length=20, default = "Tel")
+    contact_adress_name = models.CharField("Contact kısmındaki mail başlığı", max_length=20, default = "Adresse")
+    contact_mail_name = models.CharField("Contact kısmındaki mail başlığı", max_length=20, default = "Email")
+    contact_social_name = models.CharField("Contact kısmındaki sosyal adres başlığı", max_length=20, default = "Social Media")
+
+
+
+    
     class Meta:
         verbose_name = 'Site İçerik Ayarı'
         verbose_name_plural = 'Site İçerik Ayarları'
