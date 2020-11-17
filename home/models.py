@@ -1,5 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.utils.text import slugify
+from django.urls import reverse
 
 
 FONTS = (
@@ -142,9 +144,12 @@ class Resume(models.Model):
 
 
 class Service(models.Model):
-    title = models.CharField("Başlık", max_length=50)
+    title = models.CharField("Başlık", max_length=50, unique = True)
     #font = models.CharField(max_length=50, choices=BOXFONTS)
+    image = models.ImageField("detay sayfası için resim", null= True, blank = True)
     content = models.CharField("İçerik", max_length=50)
+    active = models.BooleanField("sitede gözükmesini istiyorsanız tıklayınız: ", default = False)
+    slug = models.SlugField(editable = False)
 
     class Meta:
         verbose_name = 'Hizmet'
@@ -152,6 +157,13 @@ class Service(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Service, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('home:detail', kwargs={'slug':self.slug})
 
 class CompanyType(models.Model):
     title = models.CharField("Şirket tipi", max_length=10)

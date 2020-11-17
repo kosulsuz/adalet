@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
 from .models import Setting, About, Resume, Service, CompanyType, Reference
@@ -13,7 +13,7 @@ def home(request):
         service = setting.services
         about = About.objects.first()
         resumes = Resume.objects.all()
-        services = Service.objects.all()
+        services = Service.objects.filter(active = True)
         company_types = CompanyType.objects.all()
         references = Reference.objects.all()
     except:
@@ -48,3 +48,17 @@ def home(request):
 
     }
     return render(request, 'index.html', context)
+
+
+def detail(request, slug):
+
+    setting = Setting.objects.first()
+    service = get_object_or_404(Service, slug = slug, active = True)
+
+
+    context = {
+        "setting": setting,
+        'service': service,
+    }
+
+    return render(request, 'details.html', context)
