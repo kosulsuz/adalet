@@ -48,6 +48,7 @@ class Setting(models.Model):
     service_name = models.CharField("Başlık4", max_length=20, default = "Services")  
     portfolio_name = models.CharField("Başlık5", max_length=20, default = "Portfolio")
     contact_name = models.CharField("Başlık6", max_length=20, default = "Contact")
+    extra_name = models.CharField("Ekstra About başlıklarından üretildiğinde çıkacak başlık ismi", max_length=20, default = "...")
     contact_sub_name = models.CharField("Contact kısmının alt başlığı", max_length=20, default = "Contact with us")
     contact_tel_name = models.CharField("Contact kısmındaki telefon başlığı", max_length=20, default = "Tel")
     contact_adress_name = models.CharField("Contact kısmındaki mail başlığı", max_length=20, default = "Adresse")
