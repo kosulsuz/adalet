@@ -70,14 +70,18 @@ class About(models.Model):
     about_image = models.ImageField("Hakkımızda kısmında çıkacak olan resim")
     sub_title = models.CharField("Resmin altındaki yeşil başlık", max_length=150)
     content = RichTextField("içerik")
+    active = models.BooleanField("Bu bölümün yayınlanması için tıklayınız", default = False)
+    numbers = models.BooleanField("Sayılı ve fontlu kısmı canlındırmak için tıklayınız.", default = False)    
     skill_title = models.CharField("Bar grafiklerinin olduğu kısmın üst başlığı", max_length=150, default = "Başarılarımız") 
     skill_activation = models.BooleanField("Bar grafiklerinin olduğu kısmı canlandırmak için tıklayınız", default = False)
     testimonials_title = models.CharField("Hakkımızda söylenenler kısmının başlığı", max_length=150, default = "Söylediler")
     testimonials_activation = models.BooleanField("Hakkımızda söylenenler kısmı canlandırmak için tıklayınız", default = False)
+    ranking = models.SmallIntegerField("Önde çıkmasını istediğiniz kısmın sayısı küçük tutulmalıdır.")
 
     class Meta:
         verbose_name = 'Hakkımızda'
         verbose_name_plural = "Hakkımızdakiler"
+        ordering = ('ranking', )
 
     def __str__(self):
         return self.title

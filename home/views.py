@@ -8,10 +8,15 @@ from .forms import ContactForm
 
 def home(request):
     try:
+        about_activation = False
         setting = Setting.objects.first()
         portfolio = setting.portfolio
         service = setting.services
-        about = About.objects.first()
+        abouts = About.objects.filter(active = True)
+        if abouts.count() > 1:
+            about_activation = True
+        about = abouts.first()
+        abouts = abouts[1:]
         resumes = Resume.objects.all()
         services = Service.objects.filter(active = True)
         company_types = CompanyType.objects.all()
@@ -39,7 +44,9 @@ def home(request):
         "setting": setting,
         "portfolio": portfolio,
         "service": service,
+        "abouts": abouts,
         "about": about,
+        "about_activation": about_activation,
         "resumes": resumes,
         "services": services,
         "company_types": company_types,

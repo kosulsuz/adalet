@@ -26,6 +26,8 @@ class TestimonialsInline(admin.TabularInline):
     model = Testimonials
 
 class AboutAdmin(admin.ModelAdmin):
+    list_display = ['title', 'numbers',"skill_activation", "testimonials_activation", "ranking"]
+    list_editable = ['numbers',"skill_activation", "testimonials_activation", "ranking"]
     inlines = [
         AboutLogoInline,
         SkillInline,
