@@ -6,11 +6,11 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Portfolio Details - Personal Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
+  <title>{{setting.title}}</title>
+  <meta content="" name="{{setting.description}}">
+  <meta content="" name="{{setting.keywords}}">
+  
+  <!-- Yandex mail kayıt -->
   <meta name="yandex-verification" content="c4d398ee6528c41b" />
 
   <!-- Favicons -->
@@ -78,6 +78,19 @@ body::before {
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'home:home' %}#contact">{{setting.contact_name}} <span class="sr-only">(current)</span></a>
         </li>
+        {% if about_activation %}
+        <li class="dropdown dropleft nav-item active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{setting.extra_name}}
+          </a>
+          
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% for about in abouts %}
+            <a class="dropdown-item text-dark" href="{% url 'home:home' %}#about{{about.id}}">{{about.title}}</a>
+            {% endfor %}
+          </div>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </nav>

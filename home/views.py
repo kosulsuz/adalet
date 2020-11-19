@@ -61,11 +61,20 @@ def detail(request, slug):
 
     setting = Setting.objects.first()
     service = get_object_or_404(Service, slug = slug, active = True)
+    abouts = About.objects.filter(active = True)
+    if abouts.count() > 1:
+        about_activation = True
+    about = abouts.first()
+    abouts = abouts[1:]
+
 
 
     context = {
         "setting": setting,
         'service': service,
+        "abouts": abouts,
+        "about": about,
+        "about_activation": about_activation,
     }
 
     return render(request, 'details.html', context)

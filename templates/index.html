@@ -8,8 +8,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>{{setting.title}}</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="" name="{{setting.description}}">
+  <meta content="" name="{{setting.keywords}}">
   
   <!-- Yandex mail kayıt -->
   <meta name="yandex-verification" content="c4d398ee6528c41b" />
@@ -109,8 +109,6 @@ body::before {
               {% for about in abouts %}
               <a class="dropdown-item text-dark" href="#about{{about.id}}">{{about.title}}</a>
               {% endfor %}
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
           {% endif %}
