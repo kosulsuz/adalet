@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
 	# Proje içi appler
 	'home',
+    "ikincidil",
 	#3. Parti Paketler
 	'crispy_forms',
 	'ckeditor',
