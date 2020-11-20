@@ -12,11 +12,10 @@ def home(request):
         setting = Setting.objects.first()
         portfolio = setting.portfolio
         service = setting.services
-        abouts = About.objects.filter(active = True)
-        if abouts.count() > 1:
+        abouts = About.objects.filter(active = True, one_header = False)
+        if abouts.count() > 0:
             about_activation = True
-        about = abouts.first()
-        abouts = abouts[1:]
+        header_about = About.objects.filter(active = True, one_header=True)
         resumes = Resume.objects.all()
         services = Service.objects.filter(active = True)
         company_types = CompanyType.objects.all()
@@ -45,7 +44,7 @@ def home(request):
         "portfolio": portfolio,
         "service": service,
         "abouts": abouts,
-        "about": about,
+        "header_about": header_about,
         "about_activation": about_activation,
         "resumes": resumes,
         "services": services,

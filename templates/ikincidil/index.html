@@ -111,8 +111,9 @@ body::before {
           <li><a href="#resume">{{setting.resume_name}}</a></li>
           {% if service %} <li><a href="#services">{{setting.service_name}}</a></li> {% endif %}
           {% if portfolio %} <li><a href="#portfolio">{{setting.portfolio_name}}</a></li> {% endif %}
-          <li><a href="#contact">{{setting.contact_name}}</a></li>
           <li><a href="{{setting.contact_form_url}}">{{setting.contact_from}}</a></li>
+          <li><a href="#contact">{{setting.contact_name}}</a></li>
+          
 
           <li><a href="{% url 'home:home' %}">EN</a></li>
 
