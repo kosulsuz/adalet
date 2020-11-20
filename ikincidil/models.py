@@ -130,12 +130,10 @@ class Testimonials(models.Model):
 
 
 class Resume(models.Model):
-    sub_title = models.CharField("Alt başlık", max_length=50)
     sub1_title = models.CharField("Yeşil renkli başlık", max_length=50)
     image = models.ImageField("resim")
     content = RichTextField("içerik")
     ranking = models.SmallIntegerField("sıralama sayısı", unique = True)
-    date = models.DateTimeField()
 
 
     class Meta:
@@ -183,7 +181,7 @@ class CompanyType(models.Model):
 class Reference(models.Model):
     title = models.CharField("Referansın adı:", max_length=50)
     content = models.CharField("Referansın kısa açıklaması:", max_length=75)
-    image = models.ImageField("Referans resmi")
+    image = models.ImageField("Referans resmi", null = True, blank = True)
     company_type = models.ForeignKey('CompanyType', on_delete=models.CASCADE)
     youtube_url = models.URLField("youtube_video_urli")
 

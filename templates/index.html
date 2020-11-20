@@ -402,19 +402,20 @@ body::before {
       </div>
 
       <div class="row">
-        {% for resume in resumes %}
-        <div class="col-lg-6">
+        
+        <div class="col-lg-12">
           <h3 class="resume-title">{{resume.sub_title}}</h3>
-          
-          <div class="resume-item pb-0">
+          {% for resume in resumes %}          
+          <div class="resume-item">
             <h4>{{resume.sub1_title}}</h4>
+            <h5>2015 - 2016</h5>
             <img class = "img-fluid resume-image" src="{{resume.image.url}}" alt="{{resume.sub_title}}">
               <p>{{resume.content | safe}}</p>
           </div>
-
+          {% endfor %}
 
         </div>
-        {% endfor %}
+        
       </div>
 
     </div>

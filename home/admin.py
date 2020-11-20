@@ -12,7 +12,7 @@ class ContactInfoAdmin(admin.ModelAdmin):
 
 class ResumeAdmin(admin.ModelAdmin):
 		
-    list_display = ['sub_title', 'sub1_title',"ranking"]
+    list_display = ['sub1_title',"ranking"]
     list_editable = ["ranking", ]
 
 
