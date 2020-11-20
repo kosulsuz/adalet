@@ -116,7 +116,7 @@ body::before {
           <li><a href="#contact">{{setting.contact_name}}</a></li>
           
 
-          <!-- <li><a href="{% url 'ikincidil:home' %}">TR</a></li> -->
+          {% if turkce_page %} <li><a href="{% url 'ikincidil:home' %}">TR</a></li> {% endif %}
 
         </ul>
       </nav><!-- .nav-menu -->

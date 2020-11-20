@@ -4,10 +4,16 @@ from django.contrib import messages
 from .models import Setting, About, Resume, Service, CompanyType, Reference
 from .forms import ContactForm
 
+from ikincidil.models import Setting as Turkce 
+
 # Create your views here.
 
 def home(request):
     try:
+        turkce = Turkce.objects.first()
+        turkce_page = False
+        if turkce.activation:
+            turkce_page = True
         about_activation = False
         setting = Setting.objects.first()
         portfolio = setting.portfolio
@@ -31,7 +37,7 @@ def home(request):
             print()
             print()
             print("üst taraf")
-            messages.success(request, 'Başarı bir şekilde mesajınız tarafımıza iletilmiştir. En kısa sürede sizinle iletişime geçilecektir.')
+            messages.success(request, 'Your message has been received. Thank you!')
             print("messaj gitti")
             return redirect("/")
     else:
@@ -53,6 +59,7 @@ def home(request):
         "references": references,
         "form": form,
         "resumes_right": resumes_right,
+        "turkce_page": turkce_page
 
     }
     return render(request, 'index.html', context)

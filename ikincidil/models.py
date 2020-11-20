@@ -4,19 +4,19 @@ from django.utils.text import slugify
 from django.urls import reverse
 
 
-FONTS = (
+# FONTS = (
 
-	("icofont-court", "mahkeme binası"),
-	("icofont-court-hammer", "hakim tokmağı 1"),
-	("icofont-gavel", "hakim tokmağı 2"),
-	("icofont-jail", "zindan"),
-	("icofont-law-alt-1", "dengesi bozuk terazi"),
-	("icofont-law-protect", "jop"),
-    ("icofont-thief", "hırsız"),
-    ("icofont-police-van", "polis van"),
-    ("icofont-document-folder", "dosya"),
+# 	("icofont-court", "mahkeme binası"),
+# 	("icofont-court-hammer", "hakim tokmağı 1"),
+# 	("icofont-gavel", "hakim tokmağı 2"),
+# 	("icofont-jail", "zindan"),
+# 	("icofont-law-alt-1", "dengesi bozuk terazi"),
+# 	("icofont-law-protect", "jop"),
+#     ("icofont-thief", "hırsız"),
+#     ("icofont-police-van", "polis van"),
+#     ("icofont-document-folder", "dosya"),
 
-)
+# )
 
 
 
@@ -24,6 +24,7 @@ FONTS = (
 
 
 class Setting(models.Model):
+    activation = models.BooleanField("Türkçe web sitesinin açılması için tıklayınız", default = False)
     title = models.CharField("Site sekmesinde yazacak olan yazı", max_length=50, default = "Koşulsuz Adalet Hareketi")
     icon = models.ImageField("İcon")
     description = models.CharField("Google'da arama yapıldıktan sonra çıkacak olan yazı", max_length=150)
@@ -42,12 +43,12 @@ class Setting(models.Model):
     phone = models.CharField(max_length=20)
     portfolio = models.BooleanField("Portfolio kısmının gözükmesini istiyorsanız tıklayınız:", default=False)
     services = models.BooleanField("Services kısmının segilenmesi için tıklayınız.", default=False)
-    home_name = models.CharField("Başlık1", max_length=20, default = "Home")
-    about_name = models.CharField("Başlık2", max_length=20, default = "About")  
+    home_name = models.CharField("Başlık1", max_length=20, default = "Home")  
     resume_name = models.CharField("Başlık3", max_length=20, default = "Resume")
     service_name = models.CharField("Başlık4", max_length=20, default = "Services")  
     portfolio_name = models.CharField("Başlık5", max_length=20, default = "Portfolio")
-    contact_name = models.CharField("Başlık6", max_length=20, default = "Contact")
+    media_name = models.CharField("Media kısmında hepsi", default = "All", max_length=20)
+    contact_name = models.CharField("Başlık6", max_length=20, default = "Contact", )
     extra_name = models.CharField("Ekstra About başlıklarından üretildiğinde çıkacak başlık ismi", max_length=20, default = "...")
     contact_sub_name = models.CharField("Contact kısmının alt başlığı", max_length=20, default = "Contact with us")
     contact_tel_name = models.CharField("Contact kısmındaki telefon başlığı", max_length=20, default = "Tel")
@@ -66,6 +67,7 @@ class Setting(models.Model):
 
 
 class About(models.Model):
+    main_title = models.CharField("Hakkımızda başlığı", max_length=150)
     title = models.CharField("Hakkımızda başlığı", max_length=150)    
     about_image = models.ImageField("Hakkımızda kısmında çıkacak olan resim")
     sub_title = models.CharField("Resmin altındaki yeşil başlık", max_length=150)
@@ -77,6 +79,7 @@ class About(models.Model):
     testimonials_title = models.CharField("Hakkımızda söylenenler kısmının başlığı", max_length=150, default = "Söylediler")
     testimonials_activation = models.BooleanField("Hakkımızda söylenenler kısmı canlandırmak için tıklayınız", default = False)
     ranking = models.SmallIntegerField("Önde çıkmasını istediğiniz kısmın sayısı küçük tutulmalıdır.")
+    one_header = models.BooleanField("Tek başına About tipinde başlık eklemek istiyorsanız tıklayınız.", default = False)
 
     class Meta:
         verbose_name = 'Hakkımızda'
@@ -89,7 +92,7 @@ class About(models.Model):
 
 class AboutLogo(models.Model):
     title = models.CharField("Başlık", max_length=50)
-    font = models.CharField(max_length=50, choices=FONTS)
+    font = models.CharField(max_length=80, default = "icofont-jail")
     about = models.ForeignKey("About", on_delete =models.CASCADE)
     number = models.IntegerField(default = 0)
 
@@ -130,10 +133,12 @@ class Testimonials(models.Model):
 
 
 class Resume(models.Model):
-    sub1_title = models.CharField("Yeşil renkli başlık", max_length=50)
+    sub1_title = models.CharField("Yeşil renkli başlık", max_length=100)
+    date = models.CharField("Tarih kısmı", max_length= 100, default = "First Day")
     image = models.ImageField("resim")
     content = RichTextField("içerik")
-    ranking = models.SmallIntegerField("sıralama sayısı", unique = True)
+    ranking = models.SmallIntegerField("sıralama sayısı")
+    left = models.BooleanField("Sol tarafta gözükmesini istiyorsanız tıklayınız.", default = True)
 
 
     class Meta:
@@ -152,6 +157,7 @@ class Service(models.Model):
     content = models.CharField("İçerik", max_length=50)
     active = models.BooleanField("sitede gözükmesini istiyorsanız tıklayınız: ", default = False)
     slug = models.SlugField(editable = False)
+    link = models.BooleanField("detay sayfasının açılmasını istiyorsanız tıklayınız: ", default = False)
 
     class Meta:
         verbose_name = 'Hizmet'
