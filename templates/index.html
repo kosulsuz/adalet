@@ -448,10 +448,11 @@ body::before {
       <div class="row">
         {% for service in services %}
         <div class="col-lg-4 col-md-6">
-          <div class="icon-box mb-3">
-            <div class="icon"><i class='bx bxs-chevrons-down'></i></div>
-            <h4><a href="{{service.get_absolute_url}}">{{service.title}}</a></h4>
-            <p>{{service.content}}</p>
+          <div class="card">
+           <a href="{% if service.link %}{{service.get_absolute_url}}{% else %}#{% endif %}"><img src="{{service.image.url}}" class="card-img-top" alt="{{service.title}}"></a> 
+            <div class="card-body">
+              <p class="card-text text-dark">{{service.title}}</p>
+            </div>
           </div>
         </div>
         {% endfor %}
@@ -475,7 +476,7 @@ body::before {
       <div class="row">
         <div class="col-lg-12 d-flex justify-content-center">
           <ul id="portfolio-flters">
-            <li data-filter="*" class="filter-active">***</li>
+            <li data-filter="*" class="filter-active">{{setting.media_name}}</li>
             {% for company_type in company_types %} 
             <li data-filter=".{{company_type.title}}">{{company_type.title}}</li>
             {% endfor %} 

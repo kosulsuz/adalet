@@ -61,7 +61,7 @@ def home(request):
 def detail(request, slug):
 
     setting = Setting.objects.first()
-    service = get_object_or_404(Service, slug = slug, active = True)
+    service = get_object_or_404(Service, slug = slug, active = True, link = True)
     abouts = About.objects.filter(active = True)
     if abouts.count() > 1:
         about_activation = True

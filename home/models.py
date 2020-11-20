@@ -46,7 +46,8 @@ class Setting(models.Model):
     resume_name = models.CharField("Başlık3", max_length=20, default = "Resume")
     service_name = models.CharField("Başlık4", max_length=20, default = "Services")  
     portfolio_name = models.CharField("Başlık5", max_length=20, default = "Portfolio")
-    contact_name = models.CharField("Başlık6", max_length=20, default = "Contact")
+    media_name = models.CharField("Media kısmında hepsi", default = "All", max_length=20)
+    contact_name = models.CharField("Başlık6", max_length=20, default = "Contact", )
     extra_name = models.CharField("Ekstra About başlıklarından üretildiğinde çıkacak başlık ismi", max_length=20, default = "...")
     contact_sub_name = models.CharField("Contact kısmının alt başlığı", max_length=20, default = "Contact with us")
     contact_tel_name = models.CharField("Contact kısmındaki telefon başlığı", max_length=20, default = "Tel")
@@ -155,6 +156,7 @@ class Service(models.Model):
     content = models.CharField("İçerik", max_length=50)
     active = models.BooleanField("sitede gözükmesini istiyorsanız tıklayınız: ", default = False)
     slug = models.SlugField(editable = False)
+    link = models.BooleanField("detay sayfasının açılmasını istiyorsanız tıklayınız: ", default = False)
 
     class Meta:
         verbose_name = 'Hizmet'
