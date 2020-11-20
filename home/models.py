@@ -135,7 +135,8 @@ class Resume(models.Model):
     date = models.CharField("Tarih kısmı", max_length= 100, default = "First Day")
     image = models.ImageField("resim")
     content = RichTextField("içerik")
-    ranking = models.SmallIntegerField("sıralama sayısı", unique = True)
+    ranking = models.SmallIntegerField("sıralama sayısı")
+    left = models.BooleanField("Sol tarafta gözükmesini istiyorsanız tıklayınız.", default = True)
 
 
     class Meta:

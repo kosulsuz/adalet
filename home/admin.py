@@ -12,8 +12,8 @@ class ContactInfoAdmin(admin.ModelAdmin):
 
 class ResumeAdmin(admin.ModelAdmin):
 		
-    list_display = ['sub1_title',"ranking"]
-    list_editable = ["ranking", ]
+    list_display = ['sub1_title',"ranking", "left"]
+    list_editable = ["ranking", "left"]
 
 
 class AboutLogoInline(admin.TabularInline):

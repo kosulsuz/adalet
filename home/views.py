@@ -16,7 +16,8 @@ def home(request):
         if abouts.count() > 0:
             about_activation = True
         header_about = About.objects.filter(active = True, one_header=True)
-        resumes = Resume.objects.all()
+        resumes = Resume.objects.filter(left = True)
+        resumes_right = Resume.objects.filter(left = False)
         services = Service.objects.filter(active = True)
         company_types = CompanyType.objects.all()
         references = Reference.objects.all()
@@ -51,6 +52,7 @@ def home(request):
         "company_types": company_types,
         "references": references,
         "form": form,
+        "resumes_right": resumes_right,
 
     }
     return render(request, 'index.html', context)

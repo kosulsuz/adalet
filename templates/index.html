@@ -53,7 +53,7 @@ body::before {
 }
 
 .resume-image {
-  width: 25%;
+  width: 40%;
   height: auto;
   display: block;
 }
@@ -408,7 +408,7 @@ body::before {
 
       <div class="row">
         
-        <div class="col-lg-7">
+        <div class="col-lg-7 col-md-6">
           <h3 class="resume-title">{{resume.sub_title}}</h3>
           {% for resume in resumes %}          
           <div class="resume-item">
@@ -419,6 +419,14 @@ body::before {
           </div>
           {% endfor %}
 
+        </div>
+        <div class= "col-lg-5 col-md-6">
+          {% for resume in resumes_right %} 
+          <div class = "mb-5">
+            <img class = "img-fluid resume-image" src="{{resume.image.url}}" alt="{{resume.sub_title}}">
+            <h5><small>{{resume.sub1_title}}</small></h5>
+          </div>
+          {% endfor %}
         </div>
         
       </div>
