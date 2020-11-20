@@ -54,9 +54,8 @@ class Setting(models.Model):
     contact_adress_name = models.CharField("Contact kısmındaki mail başlığı", max_length=20, default = "Adresse")
     contact_mail_name = models.CharField("Contact kısmındaki mail başlığı", max_length=20, default = "Email")
     contact_social_name = models.CharField("Contact kısmındaki sosyal adres başlığı", max_length=20, default = "Social Media")
-
-
-
+    contact_from = models.CharField("Contact Form Başlığı", max_length=100, default = "Contact Form")
+    contact_form_url = models.URLField("Contact Form Linki", max_length=100, default = "https://www.google.com/")
     
     class Meta:
         verbose_name = 'Site İçerik Ayarı'
