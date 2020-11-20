@@ -175,8 +175,8 @@ class CompanyType(models.Model):
 
     class Meta:
         #ordering = ('sıralama_sayısı', )
-        verbose_name = 'Şirket Tipi'
-        verbose_name_plural = 'Şirket Tipleri'
+        verbose_name = 'Portfolio Tipi'
+        verbose_name_plural = 'Portfolio Tipleri'
     
     def __str__(self):
         return self.title
@@ -190,8 +190,8 @@ class Reference(models.Model):
 
     class Meta:
         #ordering = ('sıralama_sayısı', )
-        verbose_name = 'Referans'
-        verbose_name_plural = 'Referanslar'
+        verbose_name = 'Portfolio'
+        verbose_name_plural = 'Portfolio'
 
     def __str__(self):
         return self.title
