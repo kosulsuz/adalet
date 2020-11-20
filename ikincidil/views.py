@@ -54,7 +54,7 @@ def home(request):
         "form": form,
 
     }
-    return render(request, 'index.html', context)
+    return render(request, 'ikincidil/index.html', context)
 
 
 def detail(request, slug):
@@ -77,4 +77,4 @@ def detail(request, slug):
         "about_activation": about_activation,
     }
 
-    return render(request, 'details.html', context)
+    return render(request, 'ikincidil/details.html', context)
