@@ -152,7 +152,7 @@ class Resume(models.Model):
 class Service(models.Model):
     title = models.CharField("Başlık", max_length=50, unique = True)
     #font = models.CharField(max_length=50, choices=BOXFONTS)
-    image = models.ImageField("detay sayfası için resim", null= True, blank = True)
+    image = models.ImageField("detay sayfası için resim")
     content = models.CharField("İçerik", max_length=50)
     active = models.BooleanField("sitede gözükmesini istiyorsanız tıklayınız: ", default = False)
     slug = models.SlugField(editable = False)
@@ -186,7 +186,7 @@ class CompanyType(models.Model):
 class Reference(models.Model):
     title = models.CharField("Referansın adı:", max_length=50)
     content = models.CharField("Referansın kısa açıklaması:", max_length=75)
-    image = models.ImageField("Referans resmi", null = True, blank = True)
+    image = models.ImageField("Referans resmi")
     company_type = models.ForeignKey('CompanyType', on_delete=models.CASCADE)
     youtube_url = models.URLField("youtube_video_urli")
 
