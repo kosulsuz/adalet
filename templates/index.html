@@ -465,7 +465,8 @@ body::before {
           <div class="card">
            <a href="{% if service.link %}{{service.get_absolute_url}}{% else %}#{% endif %}"><img src="{{service.image.url}}" class="card-img-top" alt="{{service.title}}"></a> 
             <div class="card-body">
-              <p class="card-text text-dark">{{service.title}}</p>
+              <p class="card-text text-dark mb-1 text-center">{{service.title}}</p>
+              <p class="card-text text-dark mb-1 text-center">{{service.content}}</p>
             </div>
           </div>
         </div>
